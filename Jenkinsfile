@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
         PATH = "/usr/share/maven/bin:$PATH"
-        PATH = "/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH"
+        PATH = "/usr/share/maven/bin:/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH"
     }
     stages{
         stage('Build Maven'){
