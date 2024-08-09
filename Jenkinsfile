@@ -12,12 +12,14 @@ pipeline {
                 sh 'docker build -t javatechie/devops-integration .'
             }
         }
-        stage('Push docker image'){
-            script{
-                withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                sh 'docker login -u shivambhamare -p ${dockerhubpwd}'
-}
-                sh 'docker push shivambhamare/devops-integration'
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                        sh 'docker login -u shivambhamare -p ${dockerhubpwd}'
+                    }
+                    sh 'docker push shivambhamare/devops-integration'
+                }
             }
         }
     }
