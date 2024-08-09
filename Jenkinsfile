@@ -10,5 +10,10 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('Build docker image'){
+            step{
+                sh 'docker build -t shivam/devops-integration .'
+            }
+        }
     }
 }
