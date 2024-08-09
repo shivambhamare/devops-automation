@@ -1,0 +1,10 @@
+pipeline{
+    agent any
+    stages{
+        stage('Git Checkout'){
+            steps{
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/shivambhamare/devops-automation'
+            }
+        }
+    }
+}
