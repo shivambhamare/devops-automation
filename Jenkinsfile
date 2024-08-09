@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t javatechie/devops-integration .'
+                sh 'docker build -t devops-integration .'
             }
         }
         stage('Push Docker Image') {
