@@ -1,9 +1,18 @@
 pipeline{
     agent any
+
+    environment{
+        PATH = "/usr/share/maven/bin:$PATH"
+    }
     stages{
         stage('Git Checkout'){
             steps{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/shivambhamare/devops-automation'
+            }
+        }
+        stage('Maven build'){
+            steps{
+                sh "mvn clean package"
             }
         }
     }
