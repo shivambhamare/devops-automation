@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build docker image'){
             step{
-                sh 'docker build -t shivam/devops-integration .'
+                sh 'docker build -t javatechie/devops-integration .'
             }
         }
     }
