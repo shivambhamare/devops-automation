@@ -1,19 +1,15 @@
 pipeline {
     agent any
-    environment{
-        PATH = "/usr/share/maven/bin:$PATH"
-        PATH = "/usr/share/maven/bin:/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH"
-    }
-    stages{
-        stage('Build Maven'){
-            steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shivambhamare/devops-automation']]])
+    stages {
+        stage('Build Maven') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/shivambhamare/devops-automation']]])
                 sh 'mvn clean install'
             }
         }
-        stage('Build docker image'){
-            step{
-                sh 'docker build -t javatechie/devops-integration .'
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t test-image .'
             }
         }
     }
