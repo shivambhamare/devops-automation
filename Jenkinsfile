@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t devops-integration .'
+                sh 'docker build -t shivambhamare/devops-integration .'
             }
         }
         stage('Push Docker Image') {
