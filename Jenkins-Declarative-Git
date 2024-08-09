@@ -13,6 +13,14 @@ pipeline{
         stage('Maven build'){
             steps{
                 sh "mvn clean package"
+                sh "mv target/*.war target/myweb.war"
+            }
+        }
+        stage('deploy-dev'){
+            sshagent(['infivit']) {
+                sh """
+                    scp -o StrictHostKeyChecking=no target/myweb.war infivit@192.168.1.61 
+                """
             }
         }
     }
